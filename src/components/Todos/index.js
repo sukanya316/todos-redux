@@ -6,6 +6,7 @@ import './index.css'
 
 const Todos=()=>{
 const [inpVal,setInpVal]=useState('')
+const [errMsg,setErrMsg]=useState('')
 const todosList=useSelector((state)=>state.todos)
 const dispatch=useDispatch()
 console.log(todosList)
