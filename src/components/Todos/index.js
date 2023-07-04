@@ -11,8 +11,14 @@ const dispatch=useDispatch()
 console.log(todosList)
 
 const addItem=()=>{
+     if(inpVal!==''){
     dispatch(addTodo({id:todosList.length,title:inpVal,isChecked:false}))
     setInpVal('')
+    setErrMsg('')
+    }
+    else{
+        setErrMsg('Please provide Task title!')
+    }
 }
 
 const changeStatus=(event,todo)=>{
@@ -34,6 +40,7 @@ return(
             <h2>Create <span style={{color:'gray'}}>Task</span></h2>
             <input type="input" className="input-element" value={inpVal} placeholder="What needs to be done?" onChange={(event)=>setInpVal(event.target.value)}/>
             <button className="add-btn" type="button" onClick={()=>addItem()}>Add</button>
+     { errMsg!=='' && <p style={{color:'red'}}>{errMsg}</p>}
         </div>
         <div style={{padding:'20px'}}>
             <h2>My <span style={{color:'gray'}}>Tasks</span></h2>
